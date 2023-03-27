@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=ImprovedArena
+comment0.text=\r\n\ ImprovedArena\ takes\ all\ other\ classes\ in\ the\ program\ and\ combines\ them\ to\ make\ a\ cohesive\ text-based\ RPG.\r\n\ \ -\ Trying\ to\ improve\ upon\ the\ Arena\ class\ (which\ I\ did)\r\n\ \ -\ Adding\ more\ comments,\ descriptions\ and\ dev\ thoughts\r\n\ \ -\ Instead\ of\ using\ a\ boolean\ tracker\ I'm\ going\ to\ try\ an\ int\ tracker\ (or\ smaller\ data\ type)\r\n\ \ \ \ to\ also\ initiate\ a\ sequence\ of\ an\ entirely\ new\ enemy\ once\ previous\ enemy\ has\ been\ defeated.\r\n\ \ \ \ \ -\ Ended\ up\ using\ a\ byte\ tracker\ to\ save\ on\ space\ (Not\ like\ it's\ a\ lot)\r\n\r\n\ @author\ Anthony\ L\r\n\ @version\ 3/6/23\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ Wanted\ to\ implement\ a\ main\ method\ for\ ease\ of\ use\ when\ testing\r\n
+comment2.params=
+comment2.target=ImprovedArena()
+comment2.text=\r\n\ Constructor\ for\ objects\ of\ class\ ImprovedArena\r\n
+comment3.params=
+comment3.target=void\ characterAttackSequence()
+comment3.text=\r\n\ Method\ for\ the\ characters\ (user)\ attack\ sequence.\ Includes\:\r\n\ \ -\ Instantiation\ for\ a\ Scanner\ (for\ reading\ user\ input)\r\n\ \ -\ String\ answer\ field\ (to\ assign\ users\ next\ input\ to)\r\n\ \ -\ int\ cAttack\ (to\ calcualte\ characters\ attack)\r\n\ \ \r\n\ \ -\ while\ loop\ to\ make\ sure\ program\ doesn't\ move\ on\ unless\ user\ has\ entered\ a\ valid\ input\r\n\ \ -\ check\ to\ see\ if\ both\ character\ and\ enemy\ are\ able\ to\ "fight"\r\n\ \ -\ if\ checks\ go\ through\ then\ sets\ boolean\ tracker\ to\ false\ to\ stop\ the\ loop\r\n\ \ -\ detecs\ if\ either\ character\ or\ enemy\ has\ been\ defeated.\ Intention\ is\ to\ continue\ the\ game\ if\ enemy\ dies\ but\ that's\ for\ later\r\n
+comment4.params=
+comment4.target=int\ calculateAttackWLuck()
+comment4.text=\r\n\ -\ Because\ of\ the\ order\ of\ operations\ of\ how\ skillpoints\ must\ be\ spent,\ this\ method\ cannot\ be\ put\ directly\r\n\ \ \ after\ the\ settingAttack()\ method\r\n\ -\ If\ anything,\ this\ method\ has\ to\ be\ in\ improvedArena.\ Since\ the\ intended\ mechanic\ is\ that\ the\ chance\r\n\ \ \ for\ crits\ is\ different\ every\ turn.\r\n
+comment5.params=
+comment5.target=void\ enemyAttackSequence()
+comment5.text=\r\n\ Method\ for\ enemy\ attack\ sequence.\ This\ method\ includes\ most\ of\ what\ is\ present\ in\ -\r\n\ -\ the\ characterAttackSequence()\ method,\ excluding\ the\ fields\ created\ to\ receive\ and\ store\ -\ \r\n\ -\ user\ input,\ calculation\ for\ attack\ since\ enemies\ do\ not\ have\ a\ luck\ stat,\ and\ catch\ for\ -\r\n\ -\ invalid\ inputs.\ \r\n
+comment6.params=
+comment6.target=void\ printMenu()
+numComments=7
