@@ -9,9 +9,13 @@ import java.util.Random;
  *  - Instead of using a boolean tracker I'm going to try an int tracker (or smaller data type)
  *    to also initiate a sequence of an entirely new enemy once previous enemy has been defeated.
  *     - Ended up using a byte tracker to save on space (Not like it's a lot)
+ *     
+ * 4.3.23 Notes:
+ *  - Removed constructor for this class in favor of just using a main method
+ *  - Need to fix a bug where the menu prints after the player enters an input
  *
  * @author Anthony L
- * @version 3/6/23
+ * @version 4.3.23
  */
 
 public class ImprovedArena{
@@ -45,22 +49,21 @@ public class ImprovedArena{
         enemy.doEnemyCreate();
         enemy.printStats();
 
-        //setting tracker to 0 to start it off with user going first
+        //Initialized as 0; player goes first
         tracker = 0;
         turns = 1;
 
         System.out.println();
 
-        //initiating both attack sequences and displaying turns
-        //System.out.println("Turn " + turns);
-        //Made a method to print menu, and added a check so it wouldn't print if game finished
+        //initiating both attack sequences
+        //printMenu() method; added check it doesnt print at end game
         if(tracker == 0 || tracker == 1){
             printMenu();
         }
         characterAttackSequence();
         enemyAttackSequence();
 
-        //temporary end screen since multiple enemies haven't been implemented
+        //Temporary end screen until multiple enemies gets implemented
         
         if(character.getHealth() <= 0){
             System.out.println("You have been defeated.");
@@ -72,41 +75,7 @@ public class ImprovedArena{
         System.out.println("Game finished in " + turns + " turn(s).");
     }
 
-    /**
-     * Constructor for objects of class ImprovedArena
-     */
-    private ImprovedArena()
-    {
-        //creating both character and enemy
-        character = new CharacterCreate(name, health, attack, defense, speed, luck);
-        character.userCharacterCreate();
-        character.printStats();
-
-        enemy = new EnemyCreate(name, health, attack, defense, speed, luck);
-        enemy.doEnemyCreate();
-        enemy.printStats();
-
-        //setting tracker to 0 to start it off with user going first
-        tracker = 0;
-        turns = 1;
-
-        System.out.println();
-
-        //initiating both attack sequences and displaying turns
-        //System.out.println("Turn " + turns);
-        //Made a method to print menu, and added a check so it wouldn't print if game finished
-        if(tracker == 0 || tracker == 1){
-            printMenu();
-        }
-        characterAttackSequence();
-        enemyAttackSequence();
-
-        //temporary end screen since multiple enemies haven't been implemented
-        System.out.println("Game finished in " + turns + " turns.");
-    }
-
     //Attack sequences for both character and enemy
-    //Going to implement a way for another enemy to be created when one has been defeated for both methods
     /**
      * Method for the characters (user) attack sequence. Includes:
      *  - Instantiation for a Scanner (for reading user input)
@@ -129,7 +98,6 @@ public class ImprovedArena{
         double cAttack = (character.getAttack() * 2);
 
         while(tracker == 0){
-            printMenu();
             if(answer.equals("1")){
                 if(character.getHealth() > 0 && enemy.getHealth() > 0){
                     enemy.setHealth(cAttack);
@@ -159,30 +127,7 @@ public class ImprovedArena{
                 answer = keyboard.nextLine();
             }
         }
-        //just keeping track of turns
         turns =+ 1;
-    }
-
-    /**
-     * - Because of the order of operations of how skillpoints must be spent, this method cannot be put directly
-     *   after the settingAttack() method
-     * - If anything, this method has to be in improvedArena. Since the intended mechanic is that the chance
-     *   for crits is different every turn.
-     */
-    private int calculateAttackWLuck(){
-        //Instantiating new RNG
-        Random r = new Random();
-
-        //Calculating critical hit chance
-        double critChance = character.getLuck() / 100.0;
-
-        //using RNG to see if next attack is a crit
-        boolean isCrit = r.nextDouble() < critChance;
-
-        //calculating damage
-        int damage = isCrit ? (int)(attack * 2.0) : attack;
-
-        return damage;
     }
 
     /**
@@ -217,6 +162,28 @@ public class ImprovedArena{
         turns =+ 1;
     }
 
+    /**
+     * - Because of the order of operations of how skillpoints must be spent, this method cannot be put directly
+     *   after the settingAttack() method
+     * - If anything, this method has to be in improvedArena. Since the intended mechanic is that the chance
+     *   for crits is different every turn.
+     */
+    private int calculateAttackWLuck(){
+        //Instantiating new RNG
+        Random r = new Random();
+
+        //Calculating critical hit chance
+        double critChance = character.getLuck() / 100.0;
+
+        //using RNG to see if next attack is a crit
+        boolean isCrit = r.nextDouble() < critChance;
+
+        //calculating damage
+        int damage = isCrit ? (int)(attack * 2.0) : attack;
+
+        return damage;
+    }
+    
     private static void printMenu(){
         System.out.println("1) Attack");
         System.out.println("2) WIP (NO INPUT)");
