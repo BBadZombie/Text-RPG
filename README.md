@@ -1,6 +1,6 @@
-# MedalGrabber
+# Text-RPG
 
-rpgText-game is a small Java program I use to practice game logic and demonstrate improvement in my Object Oriented Programming 
+A small text-based RPG programmed in Java. Was originally made to alleviate boredom but now I am using it to practice game logic, and demonstrate improvement in my OOP design principles (Early code for this project is pretty bad, so I'm working to fix it).
 
 ## Installation
 
@@ -8,12 +8,15 @@ rpgText-game is a small Java program I use to practice game logic and demonstrat
 
 ## Usage
 
-- No Main method has been implemented yet. It is apart of the roadmap
+- No Main method has been implemented yet
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
+Contributions not welcome, as this project is meant to display personal improvement and to practice.
+
+##Roadmap
+
+- Replace and improve upon all classes
 
 ## License
 
